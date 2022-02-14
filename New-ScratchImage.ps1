@@ -130,7 +130,7 @@ Move-Item -Path "build\image\config.json" -Destination "build\image\${configHash
 "@ | Out-File  -FilePath "build\image\manifest.json" -Encoding ascii
 
 # Tar the image
-tar.exe  -cf "build\host-process-scratch.tar" -C "build\image" . 
+tar.exe  -cf "build\host-process-scratch.tar" -C "build\image" .
 
 # Output a file with the image hash so we can import/push the image from CI
-"${layerHash}" | Out-File -FilePath "build\image-id.txt" -Encoding ascii
+"${configHash}" | Out-File -FilePath "build\image-id.txt" -Encoding ascii  -NoNewline
